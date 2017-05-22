@@ -47,14 +47,12 @@ As usual, configuration is passed through environment variables.
 - `LOGSTASH_ARGS` - Sets additional logstash command line arguments.
 
 
-## Running
-
+## Running on CentOS 7.x
 ```
 $ docker run -ti --rm \
-    -v /var/lib/logstash-kubernetes:/var/lib/logstash:z \
-    -v /var/log/journal:/var/log/journal:ro \
+    -v /run/log/journal:/var/log/journal:ro \
     -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
     -v /var/log/containers:/var/log/containers:ro \
-    -e ELASTICSEARCH_HOST=my-est-host.local:9200 \
-    quay.io/ukhomeofficedigital/logstash-kubernetes:v0.4.0
+    -e ELASTICSEARCH_HOST=192.168.42.61:31602 \
+    logstash-journald:5.4.0
 ```
