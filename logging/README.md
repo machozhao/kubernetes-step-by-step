@@ -32,3 +32,5 @@ kubectl create -f deploy/kubernetes
 http://node1:31602/_cat/indices?v
 ```
 
+# References
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
