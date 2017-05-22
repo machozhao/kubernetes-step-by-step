@@ -1,0 +1,7 @@
+FROM docker.elastic.co/logstash/logstash:5.4.0
+
+# Install plugins
+RUN logstash-plugin install logstash-output-elasticsearch && \
+    logstash-plugin install logstash-filter-kubernetes && \
+    logstash-plugin install logstash-input-journald
+

@@ -1,0 +1,11 @@
+Version: v1
+kind: Pod
+metadata:
+  name: apache
+spec:
+  containers:
+  - image: docker.io/fedora/apache
+    name: apache
+    ports:
+    - containerPort: 80
+      hostPort: 8888
