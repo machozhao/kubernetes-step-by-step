@@ -1,0 +1,41 @@
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: logstash-journald
+  labels:
+    tier: monitoring
+    name: logstash-journald
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      labels:
+        name: logstash-journald
+    spec:
+      containers:
+       - image: machozhao/logstash-journald
+         name: logstash-journald
+         env:
+            - name: ELASTICSEARCH_HOST
+              value: elasticsearch:9200
+         volumeMounts:
+            - name: varlibdockercontainers
+              mountPath: /var/lib/docker/containers
+              readOnly: true
+            - name: runlogjournal
+              mountPath: /var/log/journal
+              readOnly: true
+            - name: varlogcontainers
+              mountPath: /var/log/containers
+              readOnly: true
+      volumes:
+        - name: varlibdockercontainers
+          hostPath:
+            path: /var/lib/docker/containers
+        - name: runlogjournal
+          hostPath:
+            path: /run/log/journal
+        - name: varlogcontainers
+          hostPath:
+            path: /var/log/containers
