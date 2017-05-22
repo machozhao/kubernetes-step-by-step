@@ -21,3 +21,14 @@ Journal is a component of systemd. It capture log messages of kernel logs, syslo
 # cd logging/docker
 # docker build -f Dockerfile.office . -t machozhao/logstash-journald
 ```
+
+# Run Pod
+## Start Pod
+```
+kubectl create -f deploy/kubernetes
+```
+## Acccess Elasticsearch and get indices
+```
+http://node1:31602/_cat/indices?v
+```
+
