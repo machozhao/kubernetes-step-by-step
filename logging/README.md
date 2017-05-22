@@ -10,3 +10,14 @@ Journal is a component of systemd. It capture log messages of kernel logs, syslo
 # journalctl --since yesterday
 # 
 ```
+# Build Journald Logstash Docker image (one of following steps, you can use official images or build by yourself.)
+## Build by yourself
+```
+# cd logging/docker
+# docker build -f Dockerfile.self . -t machozhao/logstash-journald
+```
+## Build from Offical image
+```
+# cd logging/docker
+# docker build -f Dockerfile.office . -t machozhao/logstash-journald
+```
